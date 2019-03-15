@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="reset.css" />
+		<style type="text/css">
+			table {width: 100%;empty-cells: show;border-collapse: collapse;border-spacing: 0;table-layout: fixed}
+			table th,table td {line-height: 35px;border: 1px solid #ccc;text-align: center;font-weight: normal;white-space: nowrap;overflow: hidden;text-overflow: ellipsis}
+			select {
+		        /*将默认的select选择框样式清除*/
+		        appearance: none;
+		        -moz-appearance: none;
+		        -webkit-appearance: none;
+		    }
+		    /*IE浏览器隐藏下拉箭头*/
+		    select::-ms-expand {
+		        display: none;
+		    }
+			
+			.header{height:65px;line-height:65px;color:#fff;background:deepskyblue;white-space:nowrap}
+			.header .logo{display:inline-block;width:175px;font-size:24px;padding-left: 25px;}
+			.header .topnav{display:inline-block;vertical-align:top}
+			.header ul{list-style:none;display:flex}
+			.header li{text-align:center;flex:1}
+			.header li a{display:block;width:150px;color:white;text-decoration:none}
+			.header .active{background-color:#266cb3}
+			
+			.aside {
+				float: left;
+				width: 205px;
+				height: 100%;
+				color: #E4E4E4;
+				background-color: #394046;
+				overflow-y: auto;
+			}
+			.aside .top-title{
+				height: 40px;
+				line-height: 40px;
+				padding-left: 35px;
+				background: url(img/theme-activity.png) no-repeat 6px center #34393D
+			}
+			.aside .submenu li {
+				height: 45px;
+				line-height: 45px;
+				padding-left: 35px;
+				cursor: pointer
+			}
+			.aside .supmenu {
+				height: 45px;
+				line-height: 45px;
+				padding-left: 25px;
+				cursor: pointer;
+				background: url(img/dropdown.png) no-repeat right 10px center
+			}
+			.aside .collapse{background: url(img/collapse.png) no-repeat right 10px center;}
+			.active{color: #f89f43;background-color: #404952;}
+			.content{float: left;width: calc(100% - 245px);padding: 0 20px;}
+			.tablist{padding: 20px 0}
+			.mgtop{margin-top: 20px;}
+			.input-text {
+			    width: 190px;
+			    height: 28px;
+			    border: 1px solid #ccc;
+			    color: #333333;
+			}
+			.row{display: flex;margin-top: 20px;line-height: 30px;}
+			.row .col-2{flex: 1 1 100%}
+			.row .col-2:first-child{margin-right: 60px;}
+			.row .col-2 label{float: left}
+			.row .col-2 input{float: right}.row .col-2 select{float: right;background: url(img/dropdown.png) no-repeat right 4px center}
+			.formbox{position:relative ;width: 700px;height: 500px;margin: auto;/*border: 1px solid #ccc;*/}
+			.select{width: 194px;height: 30px;border: 1px solid #ccc;}
+			.formbtn{position: absolute;bottom: 20px;width: 100%;height: 30px;text-align: center;}
+			.textarea{
+				float: right;
+				width: 562px;
+			  	height: 150px;
+			  	border: 1px solid #ccc;
+			  	resize: none;
+			  	padding: 5px;
+			}	
+			.saveBtn{
+				padding: 5px 24px;			
+				text-align: center;				
+				border-radius: 5px;				
+				color: #FFFFFF;				
+				background-color: #4cadff;				
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="logo">管理系统</div>
+			<nav class="topnav">
+				<ul>
+					<li><a class="active" href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)">用户</a></li>
+					<li><a href="javascript:void(0)">角色</a></li>
+					<li><a href="javascript:void(0)">权限</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section class="main">
+			<aside class="aside">
+				<div class="top-title">主题教育活动</div>
+				<div id="accordion" class="accordion">
+					<div class="supmenu">活动管理</div>
+					<ul class="submenu">
+						<li data-id="a" data-url="activityManagement/officeLevelReleaseTasks.html">·厅级发布任务</li>
+						<li data-id="b" data-id="" data-url="aa.html">·市级发布任务</li>
+						<li data-id="c" data-url="bb.html">·单位发布任务</li>
+					</ul>
+					<div class="supmenu">单位初审上报</div>
+					<ul class="submenu">
+						<li data-id="" data-url="activityManagement/officeLevelReleaseRask.html">·任务材料填报（<font id="">2</font>）</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·单位审批上报（<font id="">1</font>）</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·完成进度情况</li>
+					</ul>
+					<div class="supmenu">市/厅任务审批上报</div>
+					<ul class="submenu">
+						<li data-id="" data-url="activityManagement/officeLevelReleaseRask.html">·单位材料审批（<font id="">2</font>）</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·任务汇总上报（<font id="">1</font>）</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·完成进度情况</li>
+					</ul>
+					<div class="supmenu">厅级任务终审</div>
+					<ul class="submenu">
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·市级材料审批（<font id="">2</font>）</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·完成进度情况</li>
+					</ul>
+					<div class="supmenu">活动统计</div>
+					<ul class="submenu">
+						<li data-id="" data-url="activityManagement/officeLevelReleaseRask.html">·厅级任务终审</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·厅级任务终审</li>
+						<li data-id="" data-url="activityManagement/cityLevelReleaseRask.html">·各市完成进度排名</li>
+					</ul>
+				</div>
+			</aside>
+			<main class="content">
+				<div class="mgtop">
+					<label>姓名：</label> <input id="staffName" class="input-text" placeholder="请输入姓名"> 
+					<span id="queryBtn" class="queryBtn">查询</span>
+				</div>
+				<div class="tablist">
+					<table class="table">
+						<tbody>
+							<tr><th>姓名</th><th>工号</th><th>联系电话</th><th>详细信息</th></tr>
+							<tr><th>姓名</th><th>工号</th><th>联系电话</th><th>详细信息</th></tr>
+							<tr><th>姓名</th><th>工号</th><th>联系电话</th><th>详细信息</th></tr>
+							<tr><th>姓名</th><th>工号</th><th>联系电话</th><th>详细信息</th></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="formbox">
+					<form id="dataform" action="" method="post">
+						<div class="row">
+							<div class="col-2">
+								<label><font color="red">*</font>月份：</label> <input name="month" class="input-text" placeholder="请输入姓名">
+							</div>
+							<div class="col-2">
+								<label><font color="red">*</font>部门：</label> <input name="dept" class="input-text" placeholder="请输入姓名">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2">
+								<label><font color="red">*</font>性别：</label> 
+								<select name="sex" class="select">
+									<option value="1">男</option>
+									<option value="0">女</option>
+								</select>
+							</div>
+							<div class="col-2">
+								<label><font color="red">*</font>年龄：</label> <input name="age" class="input-text" placeholder="请输入姓名">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2">
+								<label><font color="red">*</font>部门属性：</label> <input name="deptprop" class="input-text" placeholder="请输入姓名">
+							</div>
+							<div class="col-2">
+								<label><font color="red">*</font>上月结余：</label> <input name="lastcash" class="input-text" placeholder="请输入姓名">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2">
+								<label><font color="red">*</font>本月核发：</label> <input name="issuance" class="input-text" placeholder="请输入姓名">
+							</div>
+							<div class="col-2">
+								<label><font color="red">*</font>总预算：</label> <input name="total" class="input-text" placeholder="请输入姓名">
+							</div>
+						</div>
+						
+						<div class="mgtop">
+							<label style="vertical-align: top;">&nbsp;备 注：</label>
+							<textarea name="remark" class="textarea"></textarea>
+							
+						</div>
+						<div class="formbtn">
+							<span id="saveBtn" class="saveBtn">保存</span>&nbsp;
+							<span id="cancelBtn" class="saveBtn">取消</span>
+						</div>
+					</form>
+				</div>
+			</main>
+		</section>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="form.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#accordion").asideMenu()
+				// 保存按钮
+				$("#saveBtn").bind("click", function(e) {
+					console.time('time')
+					var obj = $("#dataform").serializeJson();
+					console.log(obj)
+					console.timeEnd('time')
+				});
+				getList()
+			});
+			function getList(){
+				console.time('time2')
+				get_async("./list.json", _callBack_getList);
+				function _callBack_getList(data){
+					$("#dataform").setFormValues(data.data)
+				}
+				console.timeEnd('time2')
+			}
+		</script>
+	</body>
+
+</html>
