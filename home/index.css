@@ -1,0 +1,708 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+	font-family: 'Microsoft YaHei';
+}
+
+body {
+	width: calc(100%);
+	height: calc(100vh);
+	min-width: 1560px;
+	min-height: 720px;
+	background: url(img/background.jpg) no-repeat;
+	background-size: 100% 100%;
+	overflow: auto;
+}
+
+.header {
+	width: 100%;
+	height: 85px;
+	position: relative;
+	color: #ffffff;
+	background: url(img/logo.gif) no-repeat;
+	background-size: 100% 100%;
+}
+
+.topLeft {
+	width: 200px;
+	height: 50px;
+	*line-height: 50px;
+	padding-top: 10px;
+	margin-left: 13px;
+	background: url(img/switchArea.png) no-repeat 0px 10px;
+	cursor: pointer;
+}
+
+.select {
+	position: relative;
+	border: none;
+	*width: 200px;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 35px;
+	color: #ffffff;
+	cursor: pointer;
+	/*很关键：将默认的select选择框样式清除*/
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+.select option {
+	background-color: #090e38;
+}
+
+.selectValue {
+	position: absolute;
+	top: 42px;
+	left: 34px;
+	display: none;
+	width: 158px;
+	height: 200px;
+	background-color: #072657;
+	border: solid 1px #d6d7dc;
+	box-shadow: 1px 1px 5px 1px #DDDDDD;
+	z-index: 50;
+}
+
+.login {
+	position: absolute;
+	top: 5px;
+	right: 40px;
+}
+
+#username {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 40px;
+	color: #CCCCCC;
+	background: url(img/user.png) no-repeat 0 center;
+	background-size: 30px 30px;
+}
+
+#loginOut {
+	padding-left: 15px;
+	cursor: pointer;
+}
+
+.main {
+	width: calc(100%);
+	height: calc(100vh - 85px);
+}
+
+.middle {
+	width: calc(100% - 10px);
+	height: calc(100%/3*2);
+}
+
+.item {
+	float: left;
+	width: calc(25% - 10px);
+	height: calc(100%);
+	margin-left: 10px;
+}
+
+.center {
+	position: relative;
+	float: left;
+	width: calc(50% - 10px);
+	height: calc(100%);
+	margin-left: 10px;
+	overflow: hidden;
+}
+
+.mapBox {
+	width: calc(100% - 200px);
+	height: calc(86%);
+}
+
+.map {
+	width: 100%;
+	height: 100%;
+}
+
+.winBox {
+	float: left;
+	width: calc(100%);
+	height: calc(50% - 10px);
+	margin-bottom: 10px;
+	background: url(img/bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.workCol {
+	width: calc(50% - 1px);
+	height: calc(100% - 20px);
+	float: left;
+}
+
+.fillBox {
+	width: 140px;
+	height: 97px;
+	margin: auto;
+}
+
+.noticeTitle {
+	-webkit-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	width: 30px;
+	padding-top: 20px;
+	float: left;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.fill {
+	width: 97px;
+	height: 97px;
+	float: right;
+}
+
+.netRow {
+	width: calc(100% - 40px);
+	height: calc(25% - 4px);
+	margin: auto;
+	border-bottom: 1px dashed #2a7a9b;
+}
+
+.leftNet {
+	width: 35px;
+	height: 35px;
+	margin: 8px 16px 8px 0px;
+	float: left;
+}
+
+.skyNetIcon {
+	background: url(img/skyNet.png) no-repeat;
+	background-size: 35px 35px;
+}
+
+.safeNetIcon {
+	background: url(img/techSafeNet.png) no-repeat;
+	background-size: 35px 35px;
+}
+
+.wifiIcon {
+	background: url(img/WIFI.png) no-repeat;
+	background-size: 35px 35px;
+}
+
+.midNetData {
+	width: 95px;
+	float: left;
+}
+
+.netCount {
+	height: 30px;
+	font-size: 26px;
+}
+
+.netName {
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+.netChart {
+	width: 186px;
+	height: 50px;
+	float: right;
+}
+
+.netBar {
+	height: 20px;
+}
+
+.netbox {
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+.netbox label {
+	color: #FFFFFF;
+}
+
+.netChang {
+	padding-top: 9px;
+	float: right;
+	text-align: right;
+	color: #FFFFFF;
+}
+
+.bottomNetRow {
+	width: calc(100% - 40px);
+	height: calc(50% - 10px);
+	margin: auto;
+}
+
+
+/* 彩色进度条样式 */
+
+.progress {
+	height: 11px;
+	overflow: visible;
+	border-radius: 3px;
+}
+
+.progress-bar-color {
+	background-color: #5bc0de;
+}
+
+.progress .progress-bar {
+	float: left;
+	height: 100%;
+	border-radius: 3px;
+	background-image: -webkit-linear-gradient(130deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+	background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+	background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+	-webkit-background-size: 40px 40px;
+	background-size: 40px 40px;
+}
+
+.bottom {
+	width: calc(100% - 10px);
+	height: calc(100%/3);
+	text-align: center;
+}
+
+.box {
+	float: left;
+	width: calc(25% - 10px);
+	height: calc(100% - 10px);
+	margin-left: 10px;
+	margin-bottom: 10px;
+	background: url(img/bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.dataBox {
+	width: calc(50%);
+	height: calc(100% - 20px);
+	float: left;
+}
+
+.dataRow {
+	width: 170px;
+	height: calc(25% - 1px);
+	line-height: 47px;
+	border-top: 1px dashed #02d0fa;
+}
+
+.dataRow:first-child {
+	border-top: none;
+}
+
+.showBox {
+	width: 100px;
+	height: 45px;
+	float: left;
+	text-align: right;
+}
+
+.changeBox {
+	width: 70px;
+	height: 45px;
+	line-height: 60px;
+	float: left;
+	text-align: right;
+	color: #FFFFFF;
+}
+
+.partIcon {
+	width: 140px;
+	height: 140px;
+	position: relative;
+	top: 50%;
+	left: 43%;
+	transform: translate(-50%, -50%);
+}
+
+.warnTitle {
+	width: calc(100% - 12px);
+	height: 25px;
+	line-height: 25px;
+	border: 1px solid #00affe;
+	background-color: #002f66;
+	margin: 15px auto 0px;
+}
+
+.warnTitle label {
+	color: #00affe;
+	width: 25%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+
+.warnList {
+	width: calc(100% - 14px);
+	height: calc(100% - 70px);
+	min-height: 155px;
+	margin: auto;
+}
+
+.warnList li {
+	list-style-type: none;
+	height: 28px;
+	padding: 0;
+	margin: 0;
+	line-height: 28px;
+	border-bottom: 1px dashed #2a7a9b;
+}
+
+.warnList label {
+	color: #00affe;
+	width: 25%;
+	height: 100%;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.title {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #ffffff;
+}
+
+.row {
+	height: 50px;
+	line-height: 45px;
+	margin-left: 25px;
+}
+
+.row label {
+	float: left;
+	color: #ffffff;
+	margin-top: 6px;
+}
+
+.dataShow {
+	width: 165px;
+	float: left;
+	padding-top: 10px;
+	margin-left: 10px;
+	background: url(img/totalBox.png) no-repeat 0 center;
+}
+
+.numbar {
+	display: inline-block;
+	color: #ffffff;
+	font-size: 20px;
+	width: 24px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+}
+
+.echartBox {
+	width: calc(100%);
+	height: calc(100% - 70px);
+}
+
+.pepleChart {
+	width: 305px;
+	height: calc(100%);
+	float: left;
+}
+
+.populationShow {
+	width: calc(100% - 310px);
+	height: calc(100% - 6px);
+	padding-top: 6px;
+	float: left;
+}
+
+.changeNum {
+	width: 60px;
+	height: 29px;
+	float: left;
+	text-align: right;
+	color: #FFFFFF;
+}
+
+.annularChart {
+	width: 160px;
+	height: 125px;
+	float: left;
+	border-right: 1px dashed #02d0fa;
+}
+
+.barChart {
+	width: calc(100% - 170px);
+	height: calc(100%);
+	float: left;
+}
+
+.topNum {
+	width: 205px;
+	height: 15px;
+	margin: auto;
+	color: #FFFFFF;
+}
+
+.numItem {
+	width: 25%;
+	float: left;
+	text-align: center;
+	font-size: 11px;
+}
+
+.buildBarChart {
+	height: 111px;
+	/*calc(100% - 35px);*/
+}
+
+.bottomNum {
+	padding-left: 14px;
+	padding-top: 4px;
+	height: 20px;
+	color: #FFFFFF;
+}
+
+.numItem font {
+	font-size: 12px;
+}
+
+.upIcon {
+	display: inline-block;
+	width: 10px;
+	height: 15px;
+	margin-left: 5px;
+	background: url(img/up.png) no-repeat 0 center;
+}
+
+.downIcon {
+	display: inline-block;
+	width: 10px;
+	height: 15px;
+	margin-left: 5px;
+	background: url(img/down.png) no-repeat 0 center;
+}
+
+.keyPersonChart {
+	width: 315px;
+	height: calc(100%);
+	float: left;
+}
+
+.keyPersonChangeData {
+	width: 55px;
+	height: calc(100% - 16px);
+	float: left;
+	padding-top: 16px;
+}
+
+.keyChangeNum {
+	width: 55px;
+	height: calc(25%);
+	float: left;
+	text-align: right;
+	color: #FFFFFF;
+}
+
+.sidebar {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 200px;
+	height: 360px;
+	background: url(img/sidebar.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.sidebarBtn {
+	position: relative;
+	width: 17px;
+	height: 360px;
+	float: left;
+}
+
+#sidebarBtn {
+	position: absolute;
+	left: 50%;
+	top: 49%;
+	width: 17px;
+	height: 52px;
+	transform: translate(-50%, -50%);
+}
+
+.openIcon {
+	background: url(img/toLeft.png) no-repeat -3px center;
+}
+
+.closeIcon {
+	background: url(img/toRight.png) no-repeat -3px center;
+}
+
+.sidebarMain {
+	width: 183px;
+	height: 360px;
+	float: left;
+}
+
+.sidebarTop {
+	width: 167px;
+	padding-top: 5px;
+	color: #FFFFFF;
+	font-size: 18px;
+	text-align: right;
+}
+
+.sidebarTitle {
+	width: 167px;
+	height: 30px;
+	margin: 0 auto 10px;
+	background: url(img/sidebarTitle.png) no-repeat center 15px;
+}
+
+.sidebar_li {
+	width: 167px;
+	height: 30px;
+	margin: 0 auto 18px;
+	background: url(img/sidebar_li.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.titleCount {
+	float: left;
+	width: 96px;
+	line-height: 27px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.titleContent {
+	float: left;
+	width: 64px;
+	line-height: 23px;
+	text-align: right;
+	color: #00affe;
+	font-size: 16px;
+}
+
+.liCount {
+	float: left;
+	width: 96px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+	font-family: "Times";
+	font-weight: bold;
+}
+
+.liContent {
+	float: left;
+	width: 70px;
+	line-height: 23px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.workTopNum {
+	padding-top: 12px;
+	width: 170px;
+	height: 15px;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.workNoticeBarChart {
+	width: 100%;
+	height: 160px;
+	padding-top: 10px;
+}
+
+.unitChart {
+	width: 360px;
+	height: 111px;
+	margin: auto;
+}
+
+.unitbottomNum {
+	width: 296px;
+	height: 20px;
+	margin: auto;
+	padding-top: 10px;
+}
+
+.unitbottomNum font {
+	color: #FFFFFF;
+}
+
+
+/*==下拉树样式 开始==*/
+
+ul,
+li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.treebox {
+	width: 100%;
+	height: 200px;
+	*overflow: scroll;
+}
+
+.ontree {
+	background-color: #18C0DF;
+	padding: 5px 3px;
+	color: white !important;
+}
+
+.tree a {
+	color: white;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.tree a:hover {
+	color: #18C0DF;
+	cursor: pointer;
+}
+
+.tree ul {
+	padding-left: 10px;
+	margin-top: 4px;
+}
+
+.close_menu,
+.open_menu {
+	overflow: hidden;
+}
+
+.close_menu span,
+.open_menu span {
+	width: 27px;
+	height: 24px;
+	display: block;
+	float: left;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.close_menu span {
+	background: url(img/close.png) no-repeat left top;
+}
+
+.open_menu span {
+	background: url(img/open.png) no-repeat left top;
+}
+
+.close_menu span:hover,
+.open_menu span:hover {
+	opacity: 1;
+}
+
+
+/*==下拉树样式 结束==*/

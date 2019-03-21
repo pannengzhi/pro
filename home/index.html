@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>叠彩公安 社区警务</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<script src="../tool/js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../tool/js/echarts-liquidfill.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../tool/js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../tool/js/jquery-ajax-expand.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../tool/js/jquery.nicescroll.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../data/diecaifenju.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../data/area.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../tool/js/treescroll.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<!--标题-->
+		<div class="header">
+			<div class="topLeft">
+				<!--		<select id="areaName" class="select">
+				</select>-->
+				<div id="areaName" class="select">叠彩分局</div>
+				<div id="selectValue" class="selectValue">
+					<div class="treebox">
+						<div id="tree" class="tree" style="width: 168px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="login">
+				<span id="username">用户名</span>
+				<span id="loginOut">退出</span>
+			</div>
+		</div>
+		<div class="main">
+			<div class="middle">
+				<div class="item">
+					<div class="winBox">
+						<div class="title">工作提醒</div>
+						<div class="workCol" style="border-right: 1px solid #2a7a9b;">
+							<div class="fillBox" style="border-bottom: 1px dashed #2a7a9b;">
+								<div class="noticeTitle">入户访查</div>
+								<div id="workNoticeUp" class="fill"></div>
+							</div>
+							<div class="fillBox">
+								<div class="noticeTitle">定期回访</div>
+								<div id="workNoticeDown" class="fill"></div>
+							</div>
+						</div>
+						<div class="workCol">
+							<div id="workNoticeBarChart" class="workNoticeBarChart"></div>
+						</div>
+					</div>
+					<div class="winBox">
+						<div class="title">天网/技防网/WiFi资源数据</div>
+						<div class="netRow" style="margin-top: 3px;">
+							<span class="leftNet skyNetIcon"></span>
+							<div class="midNetData">
+								<div id="wifiNetCount1" class="netCount" style="color: #957aff;">2500</div>
+								<div class="netName">天网点位总数</div>
+							</div>
+							<div class="netChart">
+								<div class="netbox">
+									<label>在线：</label>
+									<span id="onlineData1" style="color: #957aff;font-size: 22px;">1980</span>
+									<span class="netChang">
+										<font id="changeData1">+100</font><span class="upIcon"></span>
+									</span>
+								</div>
+								<div class="progress" style="background-color: rgba(60, 37, 146, .8);">
+									<div id="progressBar1" class="progress-bar" style="width: 65%;background-color: #957aff;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="netRow">
+							<span class="leftNet safeNetIcon"></span>
+							<div class="midNetData">
+								<div id="wifiNetCount2" class="netCount" style="color: #1f74e6;">1850</div>
+								<div class="netName">技防网点位总数</div>
+							</div>
+							<div class="netChart">
+								<div class="netbox">
+									<label>在线：</label>
+									<span id="onlineData2" style="color: #1f74e6;font-size: 22px;">956</span>
+									<span class="netChang">
+										<font id="changeData2">-32</font><span class="downIcon"></span>
+									</span>
+								</div>
+								<div class="progress" style="background-color: rgba(1, 54, 119, .8);">
+									<div id="progressBar2" class="progress-bar" style="width: 35%;background-color: #1f74e6;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="bottomNetRow">
+							<span class="leftNet wifiIcon" style="margin: 28px 16px 28px 0px;"></span>
+							<div class="midNetData" style="margin: 19px 0px;">
+								<div id="wifiNetCount3" class="netCount" style="color: #24b2db;">3680</div>
+								<div class="netName">WIFI点位总数</div>
+							</div>
+							<div class="netChart" style="height: 90px;">
+								<div class="netbox">
+									<label>在线：</label>
+									<span id="onlineData3"  style="color: #24b2db;font-size: 22px;">2950</span>
+									<span class="netChang">
+										<font id="changeData3">-5</font><span class="downIcon"></span>
+									</span>
+								</div>
+								<div class="progress" style="background-color: rgba(1, 54, 119, .8);">
+									<div id="progressBar3" class="progress-bar" style="width: 35%;background-color: #24b2db;"></div>
+								</div>
+								<div class="netbox">
+									<label>采集：</label>
+									<span id="collectData" style="color: #3be488;font-size: 22px;">850</span>
+									<span class="netChang">
+										<font id="collectChange">+5</font><span class="upIcon"></span>
+									</span>
+								</div>
+								<div class="progress" style="background-color: rgba(8, 55, 29, .8);">
+									<div id="progressBar4" class="progress-bar" style="width: 35%;background-color: #3be488;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="center">
+					<div class="mapBox">
+						<img class="map" src="img/diecaifenju.png" />
+					</div>
+					<div id="warnSidebar" class="sidebar">
+						<div class="sidebarBtn">
+							<span id="sidebarBtn" class="openIcon"></span>
+						</div>
+						<div class="sidebarMain">
+							<div id="alarmArea" class="sidebarTop">叠彩分局</div>
+							<div class="sidebarTitle">
+								<div id="alarmTotal" class="titleCount">108</div>
+								<div class="titleContent">110报警</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="criminalCount" class="liCount" style="color: #f8cc35;">8</div>
+								<div class="liContent">刑事警情</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="safeCount" class="liCount" style="color: #ff5453;">12</div>
+								<div class="liContent">治安警情</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="trafficCount" class="liCount" style="color: #50e5f4;">17</div>
+								<div class="liContent">交通警情</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="fireHelpCount" class="liCount" style="color: #05e47a;">33</div>
+								<div class="liContent">消防救援</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="peopleHelpCount" class="liCount" style="color: #8981f9;">13</div>
+								<div class="liContent">群众求助</div>
+							</div>
+							<div class="sidebar_li">
+								<div id="reportCount" class="liCount" style="color: #ff9bfc;">25</div>
+								<div class="liContent">举报线索</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="winBox">
+						<div class="title">110警情</div>
+						<div class="warnTitle">
+							<label>报警类型</label>
+							<label>报警时间</label>
+							<label>报警地点</label>
+							<label>报警人</label>
+						</div>
+						<div id="warnList" class="warnList">
+							<li>
+								<label>盗窃</label>
+								<label>2018-2-26</label>
+								<label>桓台县张田路23号</label>
+								<label>董光光</label>
+							</li>
+							<li>
+								<label>盗窃</label>
+								<label>2018-2-26</label>
+								<label>桓台县张田路23号</label>
+								<label>董光光</label>
+							</li>
+							<li>
+								<label>盗窃</label>
+								<label>2018-2-26</label>
+								<label>桓台县张田路23号</label>
+								<label>董光光</label>
+							</li>
+							<li>
+								<label>盗窃</label>
+								<label>2018-2-26</label>
+								<label>桓台县张田路23号</label>
+								<label>董光光</label>
+							</li>
+							<li>
+								<label>盗窃</label>
+								<label>2018-2-26</label>
+								<label>桓台县张田路23号</label>
+								<label>董光光</label>
+							</li>
+						</div>
+					</div>
+					<div class="winBox">
+						<div class="title">重点人员</div>
+						<div class="row">
+							<label>重点人员总数</label>
+							<div id="keyPersonData" class="dataShow">
+								<span class="numbar">0</span>
+								<span class="numbar">1</span>
+								<span class="numbar">6</span>
+								<span class="numbar">8</span>
+								<span class="numbar">0</span>
+								<span class="numbar">0</span>
+							</div>
+						</div>
+						<div class="echartBox">
+							<div id="keyPersonChart" class="keyPersonChart">
+
+							</div>
+							<div id="keyPersonChangeData" class="keyPersonChangeData">
+								<div class="keyChangeNum">
+									<font id="keyChangeCount1">+1</font><span class="upIcon"></span>
+								</div>
+								<div class="keyChangeNum">
+									<font id="keyChangeCount2">-5</font><span class="downIcon"></span>
+								</div>
+								<div class="keyChangeNum">
+									<font id="keyChangeCount3">+9</font><span class="upIcon"></span>
+								</div>
+								<div class="keyChangeNum">
+									<font id="keyChangeCount4">+5</font><span class="upIcon"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="box">
+					<div class="title">社区门禁</div>
+					<div class="dataBox">
+						<img class="partIcon" src="img/community.png" />
+					</div>
+					<div class="dataBox">
+						<div class="dataRow">
+							<div class="showBox" style="color: #e5ac12;">
+								<font id="apartmentCount" style="font-size: 28px;">560</font>栋
+							</div>
+							<div class="changeBox">
+								<font id="apartmentChange">+1000</font><span class="upIcon"></span>
+							</div>
+						</div>
+						<div class="dataRow">
+							<div id="" class="showBox" style="color: #a975f5;">
+								<font id="roomCount" style="font-size: 28px;">2600</font>间
+							</div>
+							<div class="changeBox">
+								<font id="roomChange">-26</font><span class="downIcon"></span>
+							</div>
+						</div>
+						<div class="dataRow">
+							<div class="showBox" style="color: #2c9ee0;">
+								<font id="monitorCount" style="font-size: 28px;">4700</font>个
+							</div>
+							<div class="changeBox">
+								<font id="monitorChange">-6</font><span class="downIcon"></span>
+							</div>
+						</div>
+						<div class="dataRow">
+							<div id="" class="showBox" style="color: #59c295;">
+								<font id="populousCount" style="font-size: 28px;">36000</font>个
+							</div>
+							<div class="changeBox">
+								<font id="populousChange">+30</font><span class="upIcon"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<div class="title">实有建筑</div>
+					<div class="row">
+						<label>建筑总数</label>
+						<div id="buildData" class="dataShow">
+							<span class="numbar">0</span>
+							<span class="numbar">9</span>
+							<span class="numbar">7</span>
+							<span class="numbar">0</span>
+							<span class="numbar">0</span>
+							<span class="numbar">0</span>
+						</div>
+					</div>
+					<div class="echartBox">
+						<div id="buildAnnularChart" class="annularChart"></div>
+						<div class="barChart">
+							<div id="buildBarChart" class="buildBarChart"></div>
+							<div id="buildCount" class="bottomNum">
+								<div class="numItem">
+									<font id="">+8</font><span class="upIcon"></span>
+								</div>
+								<div class="numItem">
+									<font id="">+2</font><span class="upIcon"></span>
+								</div>
+								<div class="numItem">
+									<font id="">+10</font><span class="upIcon"></span>
+								</div>
+								<div class="numItem">
+									<font id="">-3</font><span class="downIcon"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<div class="title">实有单位</div>
+					<div class="row">
+						<label>单位总数</label>
+						<div id="unitTotalData" class="dataShow">
+							<span class="numbar">0</span>
+							<span class="numbar">9</span>
+							<span class="numbar">7</span>
+							<span class="numbar">0</span>
+							<span class="numbar">0</span>
+							<span class="numbar">0</span>
+						</div>
+					</div>
+					<div class="echartBox">
+						<div id="unitChart" class="unitChart"></div>
+						<div id="unitbottomNum" class="unitbottomNum">
+							<div class="numItem">
+								<font id="unitCount1">+8</font><span class="upIcon"></span>
+							</div>
+							<div class="numItem">
+								<font id="unitCount2">+2</font><span class="upIcon"></span>
+							</div>
+							<div class="numItem">
+								<font id="unitCount3">+10</font><span class="upIcon"></span>
+							</div>
+							<div class="numItem">
+								<font id="unitCount4">-3</font><span class="downIcon"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<div class="title">实有人口</div>
+					<div class="row">
+						<label>实有人口</label>
+						<div id="actualPopulationData" class="dataShow">
+							<span class="numbar">0</span>
+							<span class="numbar">1</span>
+							<span class="numbar">6</span>
+							<span class="numbar">8</span>
+							<span class="numbar">0</span>
+							<span class="numbar">0</span>
+						</div>
+					</div>
+					<div class="echartBox">
+						<div id="truePeople" class="pepleChart"></div>
+						<div id="populationShow" class="populationShow">
+							<div class="changeNum">
+								<font id="">+100</font><span class="upIcon"></span>
+							</div>
+							<div class="changeNum">
+								<font id="">-26</font><span class="downIcon"></span>
+							</div>
+							<div class="changeNum">
+								<font id="">-6</font><span class="downIcon"></span>
+							</div>
+							<div class="changeNum">
+								<font id="">+30</font><span class="upIcon"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<script src="index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
